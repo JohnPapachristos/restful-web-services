@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,6 +16,15 @@ public class UserController {
 	@GetMapping(path = "/users")
 	public List<User> retrieveAllUsers(){
 		return userDaoService.findAll();
+	}
+	
+	@GetMapping(path = "/user/find-one/{id}")
+	public User retrieveOneUser(@PathVariable int id) {
+		if(id <= userDaoService.findAll().size() && id >=0) {
+			return userDaoService.findAll().get(id - 1);
+		}
+		return null;
+		
 	}
 	
 }
