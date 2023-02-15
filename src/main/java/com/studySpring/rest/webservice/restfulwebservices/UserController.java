@@ -2,6 +2,7 @@ package com.studySpring.rest.webservice.restfulwebservices;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +26,13 @@ public class UserController {
 	
 	@GetMapping(path = "/user/find-one/{id}")
 	public User retrieveOneUser(@PathVariable int id) {
-		if(id <= userDaoService.findAll().size() && id >=0) {
-			return userDaoService.findAll().get(id - 1);
-		}
-		return null;
+		User user = userDaoService.findAll().get(id);
 		
+		if(Objects.isNull(user)) {
+			throw new UserNotFoundException("id: " + id);
+		}
+		
+		return user;
 	}
 	
 	@PostMapping(path = "/users")
