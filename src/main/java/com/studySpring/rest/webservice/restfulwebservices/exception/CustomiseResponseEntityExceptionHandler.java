@@ -16,6 +16,6 @@ public class CustomiseResponseEntityExceptionHandler extends ResponseEntityExcep
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {
 		ErrorDetails errorDetails = new ErrorDetails(LocalDate.now(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<Object>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

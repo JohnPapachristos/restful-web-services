@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,20 @@ public class UserController {
 		User savedUser = userDaoService.save(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
 		return ResponseEntity.created(location).build();
+	}
+	
+	@DeleteMapping(path = "/delete/user/{id}")
+	public User deleteOneUser(@PathVariable int id) {
+		User user = userDaoService.findAll().get(id);
+		
+		if(Objects.isNull(user)) {
+			throw new UserNotFoundException("id: " + id);
+		}
+		User userDeleted = userDaoService.findAll().remove(id);
+		
+		return userDeleted;
+		
+		
 	}
 	
 }
