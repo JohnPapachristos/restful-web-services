@@ -2,10 +2,15 @@ package com.studySpring.rest.webservice.restfulwebservices;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
+
+@Entity(name="user_details")
 public class User {
+	@Id
 	private Integer id;
 	@Size(min = 2)
 	private String name;
