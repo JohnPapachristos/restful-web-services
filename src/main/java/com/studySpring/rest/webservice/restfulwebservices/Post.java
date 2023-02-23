@@ -28,6 +28,10 @@ public class Post {
 		this.description = description;
 	}
 	
+	public Integer getId() {
+		return this.id;
+	}
+	
 	public String getDescription() {
 		return description;
 	}
@@ -38,5 +42,13 @@ public class Post {
 	
 	public String toString() {
 		return "Id: " + this.id + "\nDescription: " + this.description;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public User getUser() {
+		return this.user;
 	}
 }
