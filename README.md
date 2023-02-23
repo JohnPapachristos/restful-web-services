@@ -15,3 +15,8 @@
 # Database using docker and mysql:
 
 ![image](https://user-images.githubusercontent.com/88382457/220899597-35afc0b9-edde-4b26-b9fb-6755798484a9.png)
+
+# Also requires authentication to perform a request:
+
+![image](https://user-images.githubusercontent.com/88382457/220900708-5f776670-8804-4cfd-a31f-560d27770581.png)
+
