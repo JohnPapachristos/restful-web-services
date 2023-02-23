@@ -60,8 +60,16 @@ public class UserJpaController {
 		User userDeleted = repository.findAll().remove(id);
 		
 		return userDeleted;
+	}
+	
+	@GetMapping(path = "/jpa/user-posts/{id}")
+	public List<Post> retrievePostsForUser(@PathVariable int id){
+		Optional<User> user = repository.findById(id);
+		if(user.isEmpty()) {
+			throw new UserNotFoundException("Could not find user with id:" + id);
+		}
 		
-		
+		return user.get().getPosts();
 	}
 	
 }

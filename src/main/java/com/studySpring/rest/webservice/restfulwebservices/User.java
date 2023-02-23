@@ -60,5 +60,13 @@ public class User {
 	public String toString() {
 		return "id: " + this.id + "\nName: " + this.name + "\nBirthDate: " + this.birthDate;
 	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+	
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 	
 }
