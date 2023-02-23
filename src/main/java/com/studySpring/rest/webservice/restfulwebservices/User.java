@@ -17,6 +17,10 @@ public class User {
 	@Past
 	private LocalDate birthDate;
 	
+	protected User() {
+		
+	}
+	
 	public User(final Integer id, final String name, final LocalDate birthDate) {
 		this.id = id;
 		this.name = name;
